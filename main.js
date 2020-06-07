@@ -9,21 +9,41 @@ if (require('electron-squirrel-startup')) { // eslint-disable-line global-requir
 const createWindow = () => {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
-    width: 1000,
+    width: 1200,
     height: 900,
   });
 
   // and load the index.html of the app.
   mainWindow.loadFile(path.join(__dirname, 'src/index.html'));
 
+
   // Open the DevTools.
-  mainWindow.webContents.openDevTools();
+  // mainWindow.webContents.openDevTools();
 };
+
+
+const createNewIndex = () => {
+  const win = new BrowserWindow({
+    width: 1200,
+    height: 900,
+    autoHideMenuBar: true,
+  });
+
+
+  win.loadFile(path.join(__dirname, 'src/starter.html'));
+
+
+  //win.webContents.openDevTools();
+}
+
+
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
 app.on('ready', createWindow);
+
+app.on('ready', createNewIndex);
 
 // Quit when all windows are closed.
 app.on('window-all-closed', () => {
